@@ -1,0 +1,9 @@
+---
+- hosts: testservers
+  tasks:
+    - name: create initfile
+      ini_file:
+        dest: /tmp/sample.ini
+        section: default
+        option: IPADDR
+        value: "{{ ansible_eth0.ipv4.address }}"

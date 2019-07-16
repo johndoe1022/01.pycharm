@@ -1,0 +1,19 @@
+---
+- hosts: testservers
+  tasks:
+    - name: Check result
+      shell: uname -a
+      register: result
+      ignore_errors: True
+
+    - debug: msg="It was failed"
+      when: result|failed
+
+    - debug: msg="It was changed"
+      when: result|changed
+
+    - debug: msg="It was skipped"
+      when: result|skipped
+
+    - debug: msg="It was succeeded"
+      when: result|succeeded

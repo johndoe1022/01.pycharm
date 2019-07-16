@@ -1,0 +1,14 @@
+---
+- hosts: testservers
+  tasks:
+    - name: Get OS Information
+      shell: rpm -qa
+      register: res
+      when: ansible_os_family == 'RedHt'
+
+    - name: Output OS information
+      debug:
+        var: res
+ #   - name: Output Traget Server's information
+ #     debug:
+ #       var: ansible_facts

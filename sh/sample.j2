@@ -1,0 +1,11 @@
+vars:
+  eth0:
+    ipv4:
+      address: "192.168.0.1"
+      netmask: "255.255.255.0"
+
+{{ eth0.ipv4.address }}
+
+{{ eth0['ipv4']['address'] }}
+
+{{ eth0['ipv4'] }}

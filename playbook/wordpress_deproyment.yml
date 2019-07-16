@@ -1,0 +1,19 @@
+---
+- hosts: Database
+  name: Deploy MariaDB for Wordpress
+  become: true
+  vars:
+    ansible_sudo_pass: 'john8979'
+
+  roles:
+    - { role: common, tags: common }
+    - { role: mariadb, tags: mariadb }
+
+- hosts: Application
+  name: Deproy Application for Wordpress
+  become: true
+  roles:
+    - { role: common, tags: common }
+    - { role: nginx, tags: nginx }
+    - { role: php-fpm, tags: php-fpm }
+    - { role: wordpress, tags: wordpress }

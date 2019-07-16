@@ -1,0 +1,5 @@
+---
+- name: check_install
+  yum:
+    name: mariadb-libs
+    state: absent
