@@ -1,0 +1,29 @@
+---
+- name: nginx / configuration(Deploy configuration file)
+  copy:
+    name: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: nginx / configuration(Set virtual host configuration)
+  template:
+    src: wordpress.cond.j2
+    dest: /etc/nginx/conf.d/wordpress.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: nginx / configuration(start nginx.service)
+  systemd:
+    name: nginx
+    state: reloaded
+    enable: yes
+
+- name: nginx / configuration(wait for nginx restart)
+  wait_for:
+    host: "{{ ansible_ipv4.eth4.address }}"
+    port: "{{ nginx_service_port }}"
+    delay: 3
+    timeout: 60

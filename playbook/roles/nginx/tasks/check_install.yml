@@ -1,8 +1,8 @@
 ---
-- name: check install
+- name: nginx / heck install
   firewalld:
     port: "{{ item }}"
     parmanent: yes
     immediate: yes
     state: enable
-  with_items: "{{ nginx_service_port }}"
+  with_items: "{{ nginx_firewalld_port }}"
