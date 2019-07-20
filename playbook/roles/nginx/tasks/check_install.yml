@@ -1,0 +1,8 @@
+---
+- name: check install
+  firewalld:
+    port: "{{ item }}"
+    parmanent: yes
+    immediate: yes
+    state: enable
+  with_items: "{{ nginx_service_port }}"
