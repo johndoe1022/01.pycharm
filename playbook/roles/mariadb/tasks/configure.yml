@@ -1,4 +1,42 @@
 ---
-- hosts:
-  tasks:
-    - name: yrdy
+#- name: configuration / set configuration file
+#  template:
+#    src: server.cnf.j2
+#    dest: /etc/my.cnf.d/server.cnf
+#    owner: root
+#    group: root
+#    mode: 0644
+#    backup: yes
+
+- name: configure / stop all mariadb for initialization
+  systemd:
+    name: mysql
+    state: started
+
+- block:
+  - name: configure / change root passwd
+    command: mysqladmin -u root password "{{ mariadb_root_pass }}"
+    args:
+      creates: "/var/lib/mysql/.change_root_pass.lck"
+    register: change_root_pass
+
+  - name: configure / setup flag file
+    file:
+      path: /var/lib/mysql/.change_root_pass.lck
+      state: touch
+      mode: 0400
+    when: change_root_pass.changed
+
+#  - name: configure / add galera SST user
+#    mysql_user:
+#      login_password: "{{ mariadb_root_pass }}"
+#      name: "{{ mariadb_sst_user }}"
+#      password: "{{ mariadb_sst_pass }}"
+#      host: "{{ ansible_eth0.ipv4.network }}/{{ ansible_eth0.ipv4.netmask }}"
+#      priv: "*.*:RELOAD,LOCK TABLES, REPLICATION CLIENT"
+#      append_privs: yes
+
+#  - name: configure / start mariadb
+#    systemd:
+#      name: mysql
+#      state: started
