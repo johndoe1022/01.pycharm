@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="30c2144d-4d25-45d3-8900-d0aee61ad5c5" name="p10adm001.domain.local" url="http://172.31.1.238">
+        <fileTransfer host="172.31.1.238" port="58979" privateKey="E:\08_project\02_devlopment\01.Inflastructure\01.Authentication\VPN_server\admin@p10adm001.key" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="58979" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

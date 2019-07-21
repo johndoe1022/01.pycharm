@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="admin@172.31.1.238:58979" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc,*.sh" filePermissions="493" folderPermissions="493" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="p10adm001.domain.local" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc,*.sh" filePermissions="493" folderPermissions="493" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="admin@172.31.1.238:58979">
+      <paths name="p10adm001.domain.local">
         <serverdata>
           <mappings>
             <mapping deploy="/home/admin/virtualenv/ansible" local="$PROJECT_DIR$" web="/" />
